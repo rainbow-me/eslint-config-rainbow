@@ -15,7 +15,22 @@ module.exports = {
 
   settings: {
     react: {
-      version: 'detect',
+      'version': 'detect',
+      'import/resolver': {
+        'node': {
+          extensions: [
+            '.js',
+            '.ios.js',
+            '.android.js',
+            '.native.js',
+            '.ts',
+            '.tsx',
+          ],
+        },
+        'babel-module': {
+          alias: {},
+        },
+      },
     },
   },
 
@@ -79,7 +94,6 @@ module.exports = {
     'no-multi-str': 'error',
     'no-new-func': 'error',
     'no-new-object': 'error',
-    'no-new-symbol': 'error',
     'no-new-symbol': 'error',
     'no-new-wrappers': 'error',
     'no-obj-calls': 'error',
@@ -328,7 +342,7 @@ module.exports = {
       plugins: ['jest'],
       files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
       env: {
-        jest: true,
+        'jest': true,
         'jest/globals': true,
       },
       rules: {
