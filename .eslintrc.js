@@ -1,3 +1,6 @@
+// This file should be organized according to rough rule hierarchy, not alphabetical
+/* eslint-disable sort-keys*/
+
 module.exports = {
   env: {
     es6: true,
@@ -16,9 +19,7 @@ module.exports = {
     },
   },
 
-  extends: [
-    require.resolve('eslint-config-prettier')
-  ],
+  extends: [require.resolve('eslint-config-prettier')],
 
   plugins: [
     'babel',
@@ -31,7 +32,7 @@ module.exports = {
   ],
 
   rules: {
-    eqeqeq: ['error', 'smart'],
+    'eqeqeq': ['error', 'smart'],
 
     'array-callback-return': 'error',
     'constructor-super': 'error',
@@ -119,7 +120,8 @@ module.exports = {
     'use-isnan': 'error',
 
     'babel/no-invalid-this': 'error',
-    'babel/no-unused-expressions': ['error', { allowShortCircuit: true }],
+    // 'babel/no-unused-expressions': ['error', { allowShortCircuit: true }],
+    'babel/no-unused-expressions': 'off',
     'babel/valid-typeof': 'error',
 
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
@@ -140,7 +142,7 @@ module.exports = {
     'import/no-unresolved': 'error',
 
     'react/button-has-type': 'error',
-    'react/no-array-index-key': 'error',
+    'react/no-array-index-key': 'off',
     'react/no-access-state-in-setstate': 'error',
     'react/no-danger': 'error',
     'react/no-danger-with-children': 'error',
@@ -192,6 +194,54 @@ module.exports = {
         useTabs: false,
       },
     ],
+
+    // rainbow rules
+    'no-console': 2,
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      },
+    ],
+    'sort-keys': ['error', 'asc', { caseSensitive: false, natural: false }],
+    'react/jsx-sort-props': [
+      'error',
+      {
+        ignoreCase: false,
+      },
+    ],
+    'react-native/no-inline-styles': 'off',
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        pathGroups: [
+          {
+            pattern: '../../../../**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: '../../../**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: '../../**',
+            group: 'parent',
+            position: 'before',
+          },
+        ],
+      },
+    ],
+    'react/display-name': 'error',
   },
 
   overrides: [
@@ -199,14 +249,14 @@ module.exports = {
       files: ['*.js'],
       parser: require.resolve('@babel/eslint-parser'),
       parserOptions: {
-        requireConfigFile: false
+        requireConfigFile: false,
       },
       plugins: [],
       rules: {
         'import/default': 'error',
-        'import/named': 'error',
+        'import/named': 'off',
         'import/namespace': 'error',
-        'import/no-named-as-default': 'error',
+        'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'error',
         'import/no-cycle': 'error',
         'import/no-deprecated': 'error',
@@ -289,15 +339,15 @@ module.exports = {
 
         'jest/consistent-test-it': ['error', { fn: 'it' }],
         'jest/expect-expect': 'error',
-        'jest/no-disabled-tests': 'error',
+        'jest/no-disabled-tests': 'off',
         'jest/no-duplicate-hooks': 'error',
         'jest/no-export': 'error',
         'jest/no-focused-tests': 'error',
         'jest/no-identical-title': 'error',
         'jest/no-jasmine-globals': 'error',
-        'jest/no-test-prefixes': 'error',
+        'jest/no-test-prefixes': 'off',
         'jest/no-test-return-statement': 'error',
-        'jest/no-truthy-falsy': 'error',
+        'jest/no-truthy-falsy': 'off',
         'jest/prefer-todo': 'error',
         'jest/require-to-throw-message': 'error',
         'jest/valid-describe': 'error',

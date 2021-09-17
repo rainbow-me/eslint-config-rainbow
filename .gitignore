@@ -1,0 +1,10 @@
+*~
+.DS_Store
+
+yarn-debug.log
+
+node_modules/
+.history/
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
