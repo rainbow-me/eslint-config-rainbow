@@ -11,9 +11,6 @@ module.exports = {
   },
 
   settings: {
-    flowtype: {
-      onlyFilesWithFlowAnnotation: true,
-    },
     react: {
       version: 'detect',
     },
@@ -204,24 +201,8 @@ module.exports = {
       parserOptions: {
         requireConfigFile: false
       },
-      plugins: ['flowtype'],
+      plugins: [],
       rules: {
-        'flowtype/array-style-complex-type': ['error', 'verbose'],
-        'flowtype/array-style-simple-type': ['error', 'shorthand'],
-        'flowtype/boolean-style': ['error', 'boolean'],
-        'flowtype/define-flow-type': 'error',
-        'flowtype/no-dupe-keys': 'error',
-        'flowtype/no-existential-type': 'warn',
-        'flowtype/no-primitive-constructor-types': 'error',
-        'flowtype/no-types-missing-file-annotation': 'error',
-        'flowtype/no-unused-expressions': [
-          'error',
-          { allowShortCircuit: true },
-        ],
-        'flowtype/require-types-at-top': 'error',
-        'flowtype/require-valid-file-annotation': 'error',
-        'flowtype/use-flow-type': 'error',
-
         'import/default': 'error',
         'import/named': 'error',
         'import/namespace': 'error',
