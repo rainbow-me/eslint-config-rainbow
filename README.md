@@ -1,4 +1,6 @@
 # eslint-config-rainbow
+[![npm version](https://img.shields.io/npm/v/eslint-config-rainbow.svg)](https://npmjs.org/package/eslint-config-rainbow)
+[![tests](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/tests.yml/badge.svg)](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/tests.yml)
 
 A shareable [eslint](ghub.io/eslint) config for Rainbow projects.
 
