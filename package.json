@@ -4,7 +4,8 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "eslint --ext '.ts,.tsx,.js,.jsx' ."
+    "test": "eslint --ext '.ts,.tsx,.js,.jsx' .",
+    "version": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "eslint-plugin-react-native": "^3.10.0"
   },
   "devDependencies": {
+    "auto-changelog": "^2.3.0",
     "eslint": "^7.22.0",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
