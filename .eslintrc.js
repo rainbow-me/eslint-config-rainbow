@@ -14,23 +14,8 @@ module.exports = {
   },
 
   settings: {
-    react: {
-      'version': 'detect',
-      'import/resolver': {
-        'node': {
-          extensions: [
-            '.js',
-            '.ios.js',
-            '.android.js',
-            '.native.js',
-            '.ts',
-            '.tsx',
-          ],
-        },
-        'babel-module': {
-          alias: {},
-        },
-      },
+    'react': {
+      version: 'detect',
     },
   },
 
