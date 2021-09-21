@@ -1,5 +1,5 @@
 // This file should be organized according to rough rule hierarchy, not alphabetical
-/* eslint-disable sort-keys*/
+/* eslint-disable sort-keys-fix/sort-keys-fix*/
 
 module.exports = {
   env: {
@@ -29,6 +29,7 @@ module.exports = {
     'react',
     'react-hooks',
     'react-native',
+    'sort-keys-fix',
   ],
 
   rules: {
@@ -205,7 +206,14 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
       },
     ],
-    'sort-keys': ['error', 'asc', { caseSensitive: false, natural: false }],
+    'sort-keys-fix/sort-keys-fix': [
+      'error',
+      'asc',
+      {
+        caseSensitive: false,
+        natural: false,
+      },
+    ],
     'react/jsx-sort-props': [
       'error',
       {
