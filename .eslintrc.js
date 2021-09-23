@@ -30,6 +30,7 @@ module.exports = {
     'react-hooks',
     'react-native',
     'sort-keys-fix',
+    'jest',
   ],
 
   rules: {
@@ -332,7 +333,6 @@ module.exports = {
       },
     },
     {
-      plugins: ['jest'],
       files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
       env: {
         'jest': true,
