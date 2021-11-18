@@ -29,6 +29,7 @@ module.exports = {
     'react',
     'react-hooks',
     'react-native',
+    'sort-destructure-keys',
     'sort-keys-fix',
     'jest',
   ],
@@ -221,6 +222,7 @@ module.exports = {
         ignoreCase: false,
       },
     ],
+    'sort-destructure-keys/sort-destructure-keys': 'error',
     'react-native/no-inline-styles': 'off',
     'import/order': [
       'error',
