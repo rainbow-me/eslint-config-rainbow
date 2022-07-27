@@ -359,7 +359,7 @@ module.exports = {
         'jest/no-truthy-falsy': 'off',
         'jest/prefer-todo': 'error',
         'jest/require-to-throw-message': 'error',
-        'jest/valid-describe': 'error',
+        'jest/valid-describe-callback': 'error',
         'jest/valid-expect-in-promise': 'error',
         'jest/valid-expect': 'error',
         'jest/valid-title': 'error',
