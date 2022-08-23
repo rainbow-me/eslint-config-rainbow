@@ -5,8 +5,7 @@
   "main": ".eslintrc.js",
   "scripts": {
     "prepare": "is-ci || husky install",
-    "test": "eslint tests",
-    "version": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md"
+    "test": "eslint tests"
   },
   "repository": {
     "type": "git",
@@ -43,7 +42,6 @@
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "@semantic-release/git": "10.0.1",
-    "auto-changelog": "^2.3.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "commitlint": "17.0.3",
     "eslint": "^7.22.0",
