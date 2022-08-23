@@ -23,5 +23,5 @@ jobs:
       - name: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.RAINBOW_TEAM_NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
         run: yarn semantic-release -d
