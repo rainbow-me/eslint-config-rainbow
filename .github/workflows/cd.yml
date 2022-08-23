@@ -1,0 +1,37 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+      - next
+      - next-major
+      - alpha
+      - beta
+      - "*.x"
+      - "*.*.x"
+
+jobs:
+  build:
+    name: CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: install
+        run: yarn
+      - name: test
+        run: yarn test
+
+      # release (will publish)
+      - name: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+        run: yarn semantic-release
+
