@@ -1,10 +1,11 @@
-// This file should be organized according to rough rule hierarchy, not alphabetical
-/* eslint-disable sort-keys-fix/sort-keys-fix*/
-
 module.exports = {
   env: {
-    es6: true,
+    es2022: true,
+    browser: true,
+    node: true,
   },
+
+  parser: '@typescript-eslint/parser',
 
   parserOptions: {
     sourceType: 'module',
@@ -13,370 +14,91 @@ module.exports = {
     },
   },
 
+  extends: [
+    'eslint:recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jest/recommended',
+
+    /**
+     * For eslint-plugin-import
+     *
+     * @see https://github.com/import-js/eslint-plugin-import/blob/d45fe21bfa09f61402c68c3d271250d95f9c9ed3/README.md?plain=1#L156
+     */
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+
+    /**
+     * Last, must override thing
+     */
+    'prettier',
+  ],
+
   settings: {
-    react: {
+    'react': {
       version: 'detect',
     },
+    'import/resolver': {
+      'typescript': true,
+      'node': true,
+      'babel-module': true,
+    },
   },
-
-  extends: [require.resolve('eslint-config-prettier')],
-
-  plugins: [
-    'babel',
-    'eslint-comments',
-    'import',
-    'prettier',
-    'react',
-    'react-hooks',
-    'react-native',
-    'sort-destructure-keys',
-    'sort-keys-fix',
-    'jest',
-  ],
 
   rules: {
-    'eqeqeq': ['error', 'smart'],
+    'prefer-object-spread': 'error',
+    'no-duplicate-imports': 'error',
+    'no-multi-assign': 'error',
+    'no-prototype-builtins': 'warn', // this one is probably fine
+    'no-irregular-whitespace': 'warn', // not a big deal most of the time
+    'spaced-comment': 'warn', // TODO
+    'no-var': 'warn', // TODO
+    'prefer-const': 'warn', // TODO
+    'prefer-rest-params': 'warn', // TODO
+    'prefer-spread': 'warn', // TODO
+    'no-async-promise-executor': 'warn', // TODO
+    'no-await-in-loop': 'warn', // TODO
+    'no-promise-executor-return': 'warn', // TODO
+    'require-atomic-updates': 'warn', // TODO
+    'default-param-last': 'warn', // TODO
+    'no-param-reassign': 'warn', // TODO
+    'no-plusplus': ['warn', { allowForLoopAfterthoughts: true }], // TODO
+    'no-nested-ternary': 'warn', // TODO
+    'no-unneeded-ternary': 'warn', // TODO
 
-    'array-callback-return': 'error',
-    'constructor-super': 'error',
-    'default-case': ['error', { commentPattern: '^no default$' }],
-    'for-direction': 'error',
-    'getter-return': 'error',
-    'new-parens': 'error',
-    'no-array-constructor': 'error',
-    'no-caller': 'error',
-    'no-case-declarations': 'error',
-    'no-class-assign': 'error',
-    'no-compare-neg-zero': 'error',
-    'no-cond-assign': ['error', 'except-parens'],
-    'no-const-assign': 'error',
-    'no-constant-condition': 'error',
-    'no-control-regex': 'error',
-    'no-delete-var': 'error',
-    'no-dupe-args': 'error',
-    'no-dupe-class-members': 'error',
-    'no-dupe-keys': 'error',
-    'no-duplicate-case': 'error',
-    'no-empty-character-class': 'error',
-    'no-empty-pattern': 'error',
-    'no-empty': 'error',
-    'no-eval': 'error',
-    'no-ex-assign': 'error',
-    'no-extend-native': 'error',
-    'no-extra-bind': 'error',
-    'no-extra-boolean-cast': 'error',
-    'no-extra-label': 'error',
-    'no-extra-semi': 'error',
-    'no-fallthrough': 'error',
-    'no-func-assign': 'error',
-    'no-global-assign': 'error',
-    'no-implied-eval': 'error',
-    'no-inner-declarations': 'error',
-    'no-invalid-regexp': 'error',
-    'no-iterator': 'error',
-    'no-label-var': 'error',
-    'no-labels': ['error', { allowLoop: true, allowSwitch: false }],
-    'no-lone-blocks': 'error',
-    'no-loop-func': 'error',
-    'no-misleading-character-class': 'error',
-    'no-multi-str': 'error',
-    'no-new-func': 'error',
-    'no-new-object': 'error',
-    'no-new-symbol': 'error',
-    'no-new-wrappers': 'error',
-    'no-obj-calls': 'error',
-    'no-octal-escape': 'error',
-    'no-octal': 'error',
-    'no-redeclare': 'error',
-    'no-regex-spaces': 'error',
-    'no-self-assign': 'error',
-    'no-self-compare': 'error',
-    'no-shadow-restricted-names': 'error',
-    'no-sparse-arrays': 'error',
-    'no-template-curly-in-string': 'error',
-    'no-this-before-super': 'error',
-    'no-throw-literal': 'error',
-    'no-undef': 'error',
-    'no-unexpected-multiline': 'error',
-    'no-unreachable': 'error',
-    'no-unsafe-finally': 'error',
-    'no-unsafe-negation': 'error',
-    'no-unused-labels': 'error',
-    'no-unused-vars': 'error',
-    'no-use-before-define': [
-      'error',
-      {
-        functions: false,
-        classes: false,
-        variables: false,
-      },
-    ],
-    'no-useless-computed-key': 'error',
-    'no-useless-concat': 'error',
-    'no-useless-constructor': 'error',
-    'no-useless-escape': 'error',
-    'no-useless-rename': 'error',
-    'no-with': 'error',
-    'require-yield': 'error',
-    'unicode-bom': 'error',
-    'use-isnan': 'error',
+    '@typescript-eslint/ban-ts-comment': ['warn', { 'ts-expect-error': 'allow-with-description' }], // TODO
+    '@typescript-eslint/no-explicit-any': 'warn', // TODO
+    '@typescript-eslint/no-inferrable-types': 'warn', // TODO
+    '@typescript-eslint/no-empty-function': 'warn', // TODO
+    '@typescript-eslint/no-var-requires': 'warn', // TODO
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn', // TODO MUST FIX
 
-    'babel/no-invalid-this': 'error',
-    // 'babel/no-unused-expressions': ['error', { allowShortCircuit: true }],
-    'babel/no-unused-expressions': 'off',
-    'babel/valid-typeof': 'error',
+    'react/jsx-props-no-spreading': 'warn',
+    'react/prop-types': 'warn', // TODO will be fixed after TS migration
+    'react/display-name': 'warn', // TODO easy fix
 
+    // mimic default eslint
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-    'eslint-comments/no-aggregating-enable': 'error',
-    'eslint-comments/no-duplicate-disable': 'error',
-    'eslint-comments/no-unlimited-disable': 'error',
-    'eslint-comments/no-unused-disable': 'error',
-    'eslint-comments/no-unused-enable': 'error',
 
-    'import/export': 'error',
-    'import/extensions': ['error', { js: 'never', json: 'always' }],
-    'import/imports-first': 'error',
-    'import/no-amd': 'error',
-    'import/no-commonjs': 'error',
-    'import/no-duplicates': 'error',
-    'import/no-extraneous-dependencies': 'error',
-    'import/no-self-import': 'error',
-    'import/no-unresolved': 'error',
-
-    'react/button-has-type': 'error',
-    'react/no-array-index-key': 'off',
-    'react/no-access-state-in-setstate': 'error',
-    'react/no-danger': 'error',
-    'react/no-danger-with-children': 'error',
-    'react/no-deprecated': 'error',
-    'react/no-did-mount-set-state': 'error',
-    'react/no-did-update-set-state': 'error',
-    'react/no-direct-mutation-state': 'error',
-    'react/no-find-dom-node': 'error',
-    'react/no-is-mounted': 'error',
-    'react/no-redundant-should-component-update': 'error',
-    'react/no-render-return-value': 'error',
-    'react/no-string-refs': 'error',
-    'react/no-this-in-sfc': 'error',
-    'react/no-typos': 'error',
-    'react/no-unescaped-entities': 'error',
-    'react/no-unknown-property': 'error',
-    'react/no-unused-prop-types': 'error',
-    'react/no-will-update-set-state': 'error',
-    'react/prefer-es6-class': 'error',
-    'react/react-in-jsx-scope': 'error',
-    'react/require-render-return': 'error',
-    'react/self-closing-comp': 'error',
-    'react/sort-comp': 'error',
-    'react/style-prop-object': 'error',
-    'react/void-dom-elements-no-children': 'error',
-    'react/jsx-boolean-value': ['error', 'never'],
-    'react/jsx-curly-brace-presence': ['error', 'never'],
-    'react/jsx-key': 'error',
-    'react/jsx-no-comment-textnodes': 'error',
-    'react/jsx-no-duplicate-props': 'error',
-    'react/jsx-no-target-blank': 'error',
-    'react/jsx-no-undef': 'error',
-    'react/jsx-pascal-case': 'error',
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
-
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-
-    'react-native/no-unused-styles': 'error',
-
-    'prettier/prettier': [
-      'error',
-      {
-        quoteProps: 'consistent',
-        singleQuote: true,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        useTabs: false,
-      },
-    ],
-
-    // rainbow rules
-    'no-console': 2,
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: true,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
-    'sort-keys-fix/sort-keys-fix': [
-      'error',
-      'asc',
-      {
-        caseSensitive: false,
-        natural: false,
-      },
-    ],
-    'react/jsx-sort-props': [
-      'error',
-      {
-        ignoreCase: false,
-      },
-    ],
-    'sort-destructure-keys/sort-destructure-keys': 'error',
-    'react-native/no-inline-styles': 'off',
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: false,
-        },
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-        pathGroups: [
-          {
-            pattern: '../../../../**',
-            group: 'parent',
-            position: 'before',
-          },
-          {
-            pattern: '../../../**',
-            group: 'parent',
-            position: 'before',
-          },
-          {
-            pattern: '../../**',
-            group: 'parent',
-            position: 'before',
-          },
-        ],
-      },
-    ],
-    'react/display-name': 'error',
+    /**
+     * @see https://typescript-eslint.io/docs/linting/troubleshooting/#eslint-plugin-import
+     *
+     * From the docs: "We recommend you do not use the following rules, as
+     * TypeScript provides the same checks as part of standard type checking:"
+     *
+     * And: "The following rules do not have equivalent checks in
+     * TypeScript, so we recommend that you only run them at CI/push time, to
+     * lessen the local performance burden."
+     */
+    'import/named': 'off',
+    'import/namespace': 'off',
+    'import/default': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/no-named-as-default': 'off', // TODO
+    'import/no-cycle': 'off', // biggest offender, but see https://github.com/rainbow-me/eslint-config-rainbow/issues/3
+    'import/no-unused-modules': 'off', // TODO
+    'import/no-deprecated': 'off', // TODO
   },
-
-  overrides: [
-    {
-      files: ['*.js'],
-      parser: require.resolve('@babel/eslint-parser'),
-      parserOptions: {
-        requireConfigFile: false,
-      },
-      plugins: [],
-      rules: {
-        'import/default': 'error',
-        'import/named': 'off',
-        'import/namespace': 'error',
-        'import/no-named-as-default': 'off',
-        'import/no-named-as-default-member': 'error',
-        'import/no-cycle': 'error',
-        'import/no-deprecated': 'error',
-      },
-    },
-    {
-      files: ['*.ts', '*.tsx'],
-      parser: require.resolve('@typescript-eslint/parser'),
-      plugins: ['@typescript-eslint/eslint-plugin'],
-      settings: {
-        'import/extensions': ['.js', '.ts', '.tsx'],
-        'import/parsers': {
-          '@typescript-eslint/parser': ['.ts', '.tsx'],
-        },
-        'import/resolver': {
-          node: {
-            extensions: ['.js', '.ts', '.tsx'],
-          },
-        },
-      },
-      rules: {
-        '@typescript-eslint/adjacent-overload-signatures': 'error',
-        '@typescript-eslint/array-type': 'error',
-        '@typescript-eslint/consistent-type-assertions': [
-          'error',
-          { assertionStyle: 'as' },
-        ],
-        '@typescript-eslint/member-delimiter-style': 'error',
-        '@typescript-eslint/no-array-constructor': 'error',
-        '@typescript-eslint/no-dynamic-delete': 'error',
-        '@typescript-eslint/no-empty-interface': [
-          'error',
-          { allowSingleExtends: true },
-        ],
-        '@typescript-eslint/no-extra-non-null-assertion': 'error',
-        '@typescript-eslint/no-extraneous-class': 'error',
-        '@typescript-eslint/no-misused-new': 'error',
-        '@typescript-eslint/no-namespace': 'error',
-        '@typescript-eslint/no-unused-vars': [
-          'error',
-          { argsIgnorePattern: '^_' },
-        ],
-        '@typescript-eslint/no-use-before-define': [
-          'error',
-          {
-            functions: false,
-            classes: false,
-            variables: false,
-            typedefs: false,
-          },
-        ],
-        '@typescript-eslint/no-useless-constructor': 'error',
-        '@typescript-eslint/prefer-for-of': 'error',
-        '@typescript-eslint/prefer-function-type': 'error',
-        '@typescript-eslint/prefer-namespace-keyword': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
-        '@typescript-eslint/triple-slash-reference': 'error',
-        '@typescript-eslint/unified-signatures': 'error',
-
-        'default-case': 'off',
-        'no-dupe-class-members': 'off',
-        'no-undef': 'off',
-        'no-unused-vars': 'off',
-        'no-array-constructor': 'off',
-        'no-use-before-define': 'off',
-      },
-    },
-    {
-      files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
-      env: {
-        'jest': true,
-        'jest/globals': true,
-      },
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-
-        'jest/consistent-test-it': ['error', { fn: 'it' }],
-        'jest/expect-expect': 'error',
-        'jest/no-disabled-tests': 'off',
-        'jest/no-duplicate-hooks': 'error',
-        'jest/no-export': 'error',
-        'jest/no-focused-tests': 'error',
-        'jest/no-identical-title': 'error',
-        'jest/no-jasmine-globals': 'error',
-        'jest/no-test-prefixes': 'off',
-        'jest/no-test-return-statement': 'error',
-        'jest/no-truthy-falsy': 'off',
-        'jest/prefer-todo': 'error',
-        'jest/require-to-throw-message': 'error',
-        'jest/valid-describe': 'error',
-        'jest/valid-expect-in-promise': 'error',
-        'jest/valid-expect': 'error',
-        'jest/valid-title': 'error',
-      },
-    },
-    {
-      files: ['*.config.js', '.*rc.js'],
-      env: {
-        node: true,
-      },
-      rules: {
-        'import/no-commonjs': 'off',
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-      },
-    },
-  ],
 };
