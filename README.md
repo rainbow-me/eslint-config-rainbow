@@ -1,15 +1,16 @@
 # eslint-config-rainbow
 [![npm version](https://img.shields.io/npm/v/eslint-config-rainbow.svg)](https://npmjs.org/package/eslint-config-rainbow)
-[![tests](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/tests.yml/badge.svg)](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/tests.yml)
+[![tests](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/cd.yml/badge.svg)](https://github.com/rainbow-me/eslint-config-rainbow/actions/workflows/cd.yml)
 
-A shareable [eslint](ghub.io/eslint) config for Rainbow projects.
+A shareable [ESLint](https://github.com/eslint/eslint) config for Rainbow
+projects.
 
 ## Usage
 
-Install into your project:
+Install this package and its peer dependencies:
 
 ```sh
-yarn add --dev prettier eslint eslint-config-rainbow
+yarn add eslint-config-rainbow eslint jest react -D
 ```
 
 Then extend your `.eslintrc.js` config:
@@ -30,6 +31,16 @@ Add a step to your `package.json` to lint your project:
 }
 ```
 
-## See also
+## Contributing
 
-`eslint-config-rainbow` is based on [`eslint-config-satya164`](https://ghub.io/eslint-config-satya164) but with flow removed and slightly modified to work better for rainbow projects.
+This repo utilizes GitHub Actions and
+[semantic-release](https://github.com/semantic-release/semantic-release) to
+automatically test and publish this package to npm. Versioning is based on the
+commit messages, which must follow the [Conventional
+Commits](https://www.conventionalcommits.org/) standard i.e. `feat: <msg>` for
+minor releases, `fix: <msg>` for patch.
+
+When creating a PR, ensure that your commits follow these patterns. Upon merging
+into `main`, your PR will be rolled up into a single release and published to
+npm. Your release and changelog notes will then appear on the [releases
+page](https://github.com/rainbow-me/eslint-config-rainbow/releases).
