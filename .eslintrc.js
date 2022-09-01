@@ -76,7 +76,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn', // TODO MUST FIX
 
     'react/jsx-props-no-spreading': 'warn',
-    'react/prop-types': 'warn', // TODO will be fixed after TS migration
+    'react/prop-types': 'off',
     'react/display-name': 'warn', // TODO easy fix
 
     // mimic default eslint
